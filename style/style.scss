@@ -1,0 +1,92 @@
+$gfam: Arial, Helvetica, sans-serif;
+$grey: rgb(219, 215, 215);
+
+@mixin flex-center(){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    font-family: $gfam;
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: 15% 65% 20%;
+    grid-template-areas: 
+    "header header"
+    "main aside"
+    "footer footer";
+    font-size: 24px;
+    font-weight: 700;
+    .header {
+        grid-area: header;
+        background-color: $grey;
+        @include flex-center;
+    }
+    .main {
+        grid-area: main;
+        background-color:antiquewhite;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 50px;
+        .main__blocks {
+            height: 100%;
+            width: 100%;
+            padding: 150px 20px 20px 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            row-gap: 20px;
+            column-gap: 40px;
+            grid-template-areas: 
+            "main__block-one main__block-two"
+            "main__block-three main__block-three";
+
+            .block {
+                background-color: rgb(253, 213, 164);
+                @include flex-center;
+            }
+            .main__block-one {
+                grid-area: main__block-one;
+            }
+            .main__block-two {
+                grid-area: main__block-two;
+            }
+            .main__block-three {
+                grid-area: main__block-three;
+            }
+        }
+    }
+
+    .aside {
+        grid-area: aside;
+        background-color: rgb(225, 251, 204);
+        display: flex;
+        justify-content: center;
+        padding-top: 50px;
+    }
+
+    .footer {
+        grid-area: footer;
+        background-color: $grey;
+        padding: 30px 20px;
+        height: 100%;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 1fr;
+        column-gap: 40px;
+        .section {
+            background-color: rgb(228, 246, 246);
+            @include flex-center;
+        }
+    }
+}
